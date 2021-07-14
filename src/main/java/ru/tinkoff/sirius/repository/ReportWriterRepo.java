@@ -22,8 +22,10 @@ public class ReportWriterRepo {
             FileWriter fileWriter = new FileWriter(destination);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(gson.toJson(deliveries));
+            bufferedWriter.close();
+            Thread.sleep(5_000);
             return true;
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             return false;
         }
     }
